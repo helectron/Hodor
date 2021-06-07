@@ -8,7 +8,7 @@ Holberton School
 import requests
 
 # Level 1
-times = 4096
+times = 1
 URL = 'http://158.69.76.135/level1.php'
 
 for i in range(times):
@@ -27,4 +27,5 @@ for i in range(times):
         print(error)
     print(response_post.headers)
     print("Status: {} of 4096".format(i + 1))
+    print('Post request status: {}'.format(response_post.status_code))
 print("Cheat online voting process finished :)")
