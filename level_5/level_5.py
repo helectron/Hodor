@@ -11,7 +11,7 @@ pytesseract.tesseract_cmd = r'C:\Users\ellen\AppData\Local\Programs\
                             Tesseract-OCR\tesseract'
 
 # level 5
-times = 2
+times = 1024
 URL = 'http://158.69.76.135/level5.php'
 url_captcha = 'http://158.69.76.135/captcha.php'
 windows_user = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -21,17 +21,19 @@ header = {'User-Agent': windows_user, 'Referer': URL}
 
 for i in range(times):
     try:
-        # start request session
+        # Request session start
         with requests.Session() as session:
             # Get the response object by get method
             response = session.get(URL, headers=header)
 
+            # Get image response object
             image = session.get(url_captcha, headers=header)
 
             image_file = open('captcha.png', 'wb')
             image_file.write(image.content)
             image_file.close()
 
+            # write captcha file
             captcha = pytesseract.image_to_string(Image.open('captcha.png'))
             captcha = captcha.replace(" ", "").strip()
 
@@ -42,11 +44,12 @@ for i in range(times):
                 if cookie.name == 'HoldTheDoor':
                     key = cookie.value
                     break
-
+            
+            # Composing the data that will be send
             my_data = {
                 'id': '2282', 'key': key,
                 'captcha': captcha, 'holdthedoor': 'submit'}
-            # send data
+            # Sending the data
             response_post = session.post(URL, headers=header, data=my_data)
     except Exception as error:
         print(error)
