@@ -8,7 +8,7 @@ Holberton School
 import requests
 
 # Level 1
-times = 1
+times = 4096
 URL = 'http://158.69.76.135/level1.php'
 
 for i in range(times):
