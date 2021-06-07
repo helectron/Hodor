@@ -17,7 +17,7 @@ pytesseract.tesseract_cmd = r'C:\Users\ellen\AppData\Local\Programs\
                             Tesseract-OCR\tesseract'
 
 # Level 3
-times = 2
+times = 1025
 
 URL = 'http://158.69.76.135/level3.php'
 windows_user = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
