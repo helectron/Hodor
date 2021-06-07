@@ -13,6 +13,7 @@ try:
 except ImportError:
     import Image
 import pytesseract
+pytesseract.tesseract_cmd = r'C:\Users\ellen\AppData\Local\Programs\Tesseract-OCR\tesseract'
 
 # Level 3
 times = 1
@@ -41,7 +42,7 @@ for i in range(times):
             captcha = captcha.replace(" ", "").strip()
 
             # Obtaining the key from cookies
-            key = session.cookies['HoldTheDoor']
+            key = response.cookies['HoldTheDoor']
             # Composing the data that will be send
             my_id = {
                     'id': 2282, 'key': key,
