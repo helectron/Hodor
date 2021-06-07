@@ -15,7 +15,8 @@ except ImportError:
 import pytesseract
 
 # Level 3
-times = 1024
+times = 1
+
 URL = 'http://158.69.76.135/level3.php'
 windows_user = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                 "(KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36")
@@ -32,7 +33,7 @@ for i in range(times):
 
             # write captcha file
             image_file = open('captcha.png', 'wb')
-            image_file.write(i.content)
+            image_file.write(image.content)
             image_file.close()
 
             # Solve captcha with pytesseract
